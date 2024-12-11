@@ -40,6 +40,6 @@ public class Reservation {
     private LocalDate dateFin;
 
     @Type(JsonType.class)
-    @Column(columnDefinition = "jsonb", nullable = true)
+    @Column(columnDefinition = "json", nullable = true)
     private Map<String, String> preferences;
 }
