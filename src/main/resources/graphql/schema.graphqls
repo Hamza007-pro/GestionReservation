@@ -37,19 +37,19 @@ type Reservation {
   chambre: Chambre!
   dateDebut: String!
   dateFin: String!
-  preferences: JSON
+  preferences: String
 }
 
 
 type Query {
-  getClients: [Client!]!
-  getClientById(id: ID!): Client
-  getUtilisateurs: [Utilisateur!]!
-  getUtilisateurById(id: ID!): Utilisateur
-  getChambres: [Chambre!]!
-  getChambreById(id: ID!): Chambre
-  getReservations: [Reservation!]!
-  getReservationById(id: ID!): Reservation
+    allClients: [Client!]!
+    clientById(id: ID!): Client
+    getUtilisateurs: [Utilisateur!]!
+    getUtilisateurById(id: ID!): Utilisateur
+    allChambres: [Chambre!]!
+    chambreById(id: ID!): Chambre
+    allReservations: [Reservation!]!
+    reservationById(id: ID!): Reservation
 }
 
 type Mutation {
@@ -69,14 +69,14 @@ type Mutation {
   deleteChambre(id: ID!): Boolean!
 
   # Reservation Mutations
-  createReservation(clientId: ID!, chambreId: ID!, dateDebut: String!, dateFin: String!, preferences: JSON): Reservation!
+  createReservation(clientId: ID!, chambreId: ID!, dateDebut: String!, dateFin: String!, preferences: String): Reservation!
   updateReservation(
     id: ID!,
     clientId: ID,
     chambreId: ID,
     dateDebut: String,
     dateFin: String,
-    preferences: JSON
+    preferences: String
   ): Reservation!
   deleteReservation(id: ID!): Boolean!
 }

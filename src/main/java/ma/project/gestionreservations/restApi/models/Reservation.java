@@ -44,7 +44,6 @@ public class Reservation {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateFin;
 
-    @Type(JsonType.class)
-    @Column(columnDefinition = "json", nullable = true)
-    private Map<String, String> preferences;
+    @Column(nullable = true)
+    private String preferences;
 }

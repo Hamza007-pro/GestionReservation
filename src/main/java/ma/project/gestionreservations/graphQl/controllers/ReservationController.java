@@ -44,7 +44,7 @@ public class ReservationController {
             @Argument Long chambreId,
             @Argument String dateDebut,
             @Argument String dateFin,
-            @Argument Map<String, String> preferences
+            @Argument String preferences
     ) {
         Client client = clientService.getClientById(clientId)
                 .orElseThrow(() -> new RuntimeException("Client not found with ID: " + clientId));
@@ -72,7 +72,7 @@ public class ReservationController {
             @Argument Long chambreId,
             @Argument String dateDebut,
             @Argument String dateFin,
-            @Argument String preferences // Update if needed
+            @Argument String preferences
     ) {
         Client client = clientService.getClientById(clientId)
                 .orElseThrow(() -> new RuntimeException("Client not found with ID: " + clientId));

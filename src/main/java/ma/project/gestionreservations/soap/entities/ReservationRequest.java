@@ -17,7 +17,7 @@ public class ReservationRequest {
     private Chambre chambre;
     private LocalDate dateDebut;
     private LocalDate dateFin;
-    private Map<String, String> preferences;
+    private String preferences;
 
     @XmlElement
     @NotNull(message = "Le client est obligatoire")
@@ -60,11 +60,11 @@ public class ReservationRequest {
     }
 
     @XmlElement
-    public Map<String, String> getPreferences() {
+    public String getPreferences() {
         return preferences;
     }
 
-    public void setPreferences(Map<String, String> preferences) {
+    public void setPreferences(String preferences) {
         this.preferences = preferences;
     }
 
