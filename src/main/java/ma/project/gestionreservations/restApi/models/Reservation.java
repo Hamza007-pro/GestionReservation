@@ -1,5 +1,6 @@
 package ma.project.gestionreservations.restApi.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -33,10 +34,14 @@ public class Reservation {
 
     @Column(nullable = false)
     @NotNull(message = "La date de début est obligatoire")
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateDebut;
 
     @Column(nullable = false)
     @NotNull(message = "La date de fin est obligatoire")
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateFin;
 
     @Type(JsonType.class)

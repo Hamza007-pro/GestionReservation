@@ -1,0 +1,82 @@
+type Client {
+  id: ID!
+  nom: String!
+  prenom: String!
+  email: String!
+  telephone: String
+}
+
+type Utilisateur {
+  id: ID!
+  nomUtilisateur: String!
+  motDePasse: String!
+  role: Role!
+}
+
+enum Role {
+  UTILISATEUR
+  ADMINISTRATEUR
+}
+
+enum TypeChambre {
+  SINGLE
+  DOUBLE
+  SUITE
+}
+
+type Chambre {
+    id: ID
+    type: TypeChambre
+    prix: Float
+    disponible: Boolean
+}
+
+type Reservation {
+  id: ID!
+  client: Client!
+  chambre: Chambre!
+  dateDebut: String!
+  dateFin: String!
+  preferences: JSON
+}
+
+
+type Query {
+  getClients: [Client!]!
+  getClientById(id: ID!): Client
+  getUtilisateurs: [Utilisateur!]!
+  getUtilisateurById(id: ID!): Utilisateur
+  getChambres: [Chambre!]!
+  getChambreById(id: ID!): Chambre
+  getReservations: [Reservation!]!
+  getReservationById(id: ID!): Reservation
+}
+
+type Mutation {
+  # Client Mutations
+  createClient(nom: String!, prenom: String!, email: String!, telephone: String): Client!
+  updateClient(id: ID!, nom: String, prenom: String, email: String, telephone: String): Client!
+  deleteClient(id: ID!): Boolean!
+
+  # Utilisateur Mutations
+  createUtilisateur(nomUtilisateur: String!, motDePasse: String!, role: Role!): Utilisateur!
+  updateUtilisateur(id: ID!, nomUtilisateur: String, motDePasse: String, role: Role): Utilisateur!
+  deleteUtilisateur(id: ID!): Boolean!
+
+  # Chambre Mutations
+  createChambre(type: TypeChambre!, prix: Float!, disponible: Boolean!): Chambre!
+  updateChambre(id: ID!, type: TypeChambre, prix: Float, disponible: Boolean): Chambre!
+  deleteChambre(id: ID!): Boolean!
+
+  # Reservation Mutations
+  createReservation(clientId: ID!, chambreId: ID!, dateDebut: String!, dateFin: String!, preferences: JSON): Reservation!
+  updateReservation(
+    id: ID!,
+    clientId: ID,
+    chambreId: ID,
+    dateDebut: String,
+    dateFin: String,
+    preferences: JSON
+  ): Reservation!
+  deleteReservation(id: ID!): Boolean!
+}
